@@ -11,11 +11,20 @@ const displayPhones = phonse => {
     const phonContainer = document.getElementById('phone-container');
     // clear phone container cards befor adding new cards
     phonContainer.textContent='';
+    // display show all button if there are more then 12 phones
+     const showAllContainer = document.getElementById('show-allcontainer');
+     if(phonse.length>12){
+      showAllContainer.classList.remove('hidden');
+     }
+     else{
+      showAllContainer.classList.add('hidden');
+     }
 
+    phonse= phonse.slice(0,12);
 
 
     phonse.forEach(phone =>{
-        console.log(phone);
+        //console.log(phone);
         // 2 create a div 
         const phoneCard = document.createElement('div');
         phoneCard.classList = `card bg-gray-100 p-4 shadow-xl`;
@@ -48,6 +57,14 @@ const handleSearch= () =>{
    const searchText = searchField.value;
    console.log(searchText);
    loadephone(searchText);
+}
+
+const handleSearch2 = ()=>{
+ const searchField2 = document.getElementById('search-field2');
+ const searchText2 = searchField2.value;
+ console.log(searchText2);
+ loadephone(searchText2)
+  
 }
 
 

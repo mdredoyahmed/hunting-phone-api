@@ -17,9 +17,12 @@
     <main class=" container mx-auto mt-8 ">
         <section class="bg-gray-100 p-4 m-4 ">
            
-                <input id="search-field"  type="text" placeholder="--search..." class="input w-full max-w-xs" />
-
+                <input id="search-field"  type="text" placeholder="--search..." class="input w-full max-w-xs input-bordered" />
                 <button class="btn btn-accent" onclick="handleSearch()">search</button>
+
+                <input id="search-field2" type="text" placeholder="search" class="input w-full max-w-xs bod input-bordered" />
+                <button onclick="handleSearch2()" class="btn btn-accent" > search </button>
+
 
         </section>
 
@@ -30,6 +33,10 @@
             <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                 
+            </div>
+
+            <div id="show-allcontainer" class="hidden">
+                <button class="btn btn-accent">show all</button>
             </div>
         </section>
 
