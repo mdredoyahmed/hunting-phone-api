@@ -20,9 +20,9 @@
                 <input id="search-field"  type="text" placeholder="--search..." class="input w-full max-w-xs input-bordered" />
                 <button class="btn btn-accent" onclick="handleSearch()">search</button>
 
-                <input id="search-field2" type="text" placeholder="search" class="input w-full max-w-xs bod input-bordered" />
+                <!-- <input id="search-field2" type="text" placeholder="search" class="input w-full max-w-xs bod input-bordered" />
                 <button onclick="handleSearch2()" class="btn btn-accent" > search </button>
-
+ -->
 
         </section>
 
@@ -30,13 +30,18 @@
 
     <!--search result -->
         <section>
+            <!--spineer or lodding -->
+            <div id="lodding-container"  class="text-center my-40  hidden ">
+                <span class="loading loading-spinner text-primary loading-lg"></span>
+            </div>
+
             <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                 
             </div>
 
-            <div id="show-allcontainer" class="hidden">
-                <button class="btn btn-accent">show all</button>
+            <div id="show-allcontainer" class="hidden text-center my-8">
+                <button onclick="handleShowAll()" class="btn btn-accent">show all</button>
             </div>
         </section>
 

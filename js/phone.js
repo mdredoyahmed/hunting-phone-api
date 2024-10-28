@@ -1,26 +1,31 @@
-const loadephone = async (searchText) => {
+const loadephone = async (searchText,isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
-    displayPhones(phones);
+    displayPhones(phones,isShowAll);
 
 
 }
-const displayPhones = phonse => {
+const displayPhones = (phonse,isShowAll )=> {
     //console.log(phonse);
     const phonContainer = document.getElementById('phone-container');
     // clear phone container cards befor adding new cards
     phonContainer.textContent='';
     // display show all button if there are more then 12 phones
      const showAllContainer = document.getElementById('show-allcontainer');
-     if(phonse.length>12){
+     if(phonse.length>12 && !isShowAll){
       showAllContainer.classList.remove('hidden');
      }
      else{
       showAllContainer.classList.add('hidden');
      }
 
-    phonse= phonse.slice(0,12);
+     console.log('is show all',isShowAll)
+         //display only first 12 phones if not show all
+
+    if(!isShowAll){
+      phonse =phonse.slice(0,12);
+    }
 
 
     phonse.forEach(phone =>{
@@ -50,22 +55,46 @@ const displayPhones = phonse => {
     phonContainer.appendChild(phoneCard);
 
     });
-}
+    //hiden loding spiner
+    toggleLodingSpinner(false);
 
-const handleSearch= () =>{
+}
+//handel search button
+const handleSearch= (isShowAll) =>{
+  toggleLodingSpinner(true);
    const searchField = document.getElementById('search-field');
    const searchText = searchField.value;
    console.log(searchText);
-   loadephone(searchText);
+   loadephone(searchText,isShowAll);
 }
 
-const handleSearch2 = ()=>{
- const searchField2 = document.getElementById('search-field2');
- const searchText2 = searchField2.value;
- console.log(searchText2);
- loadephone(searchText2)
+
+//handel search recap 
+
+// const handleSearch2 = ()=>{
+//   toggleLodingSpinner(true);
+//  const searchField2 = document.getElementById('search-field2');
+//  const searchText2 = searchField2.value;
+//  console.log(searchText2);
+//  loadephone(searchText2)
   
+// }
+
+
+
+const toggleLodingSpinner = (isloding) => {
+  const lodingSpinner = document.getElementById('lodding-container');
+  if(isloding){
+    lodingSpinner.classList.remove('hidden');
+  }
+  else{
+    lodingSpinner.classList.add('hidden');
+  }
 }
 
+//handal show all
+const handleShowAll = () =>{
+  handleSearch(true);
 
+}
 //loadephone();
